@@ -98,31 +98,33 @@ public void delete2(String pass,int no) { //삭제에 해당하는 번호의 테
 	
 	Connection con = new DbConnect().getCon(); //드라이버로드, 디비연동
 	PreparedStatement pstmt = null;
-	PreparedStatement pstmt2 = null;
+	//PreparedStatement pstmt2 = null;
 	ResultSet rs = null;
 	String tPass=null;
 
 	try {
 		String sql2="select password from guestbook where no="+no;
-		pstmt2 = con.prepareStatement(sql2);
-		rs = pstmt2.executeQuery();
-		while(rs.next())
-		tPass = rs.getString(1);
+		pstmt = con.prepareStatement(sql2);
+		rs = pstmt.executeQuery();
 		int count=0;
+		while(rs.next()) {
+		tPass = rs.getString(1);
+		
 		if(pass.equals(tPass))  {	
 			// 3. SQL문 준비 / 바인딩 / 실행
-			String sql= "delete from guestbook where password=?";
+			String sql= "delete from guestbook where no=?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, pass);
+			pstmt.setInt(1, no);
 			
 			count = pstmt.executeUpdate();
 			
+		}
 		}
 		
 		
 
 		// 4.결과처리
-		System.out.println(count + "건 저장완료");
+		System.out.println(count + "건 삭제완료");
 	}  catch (SQLException e) {
 		System.out.println("error:" + e);
 	} finally {
