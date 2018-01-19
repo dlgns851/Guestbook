@@ -7,7 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%String no2=request.getParameter("no2");
+%>
+
+
 <form action="delete.jsp">
+<input type="hidden" name="no2" value="<%=no2%>">
 비밀번호 <input type="password" name="password">
 <input type="submit" value="확인">
 </form>

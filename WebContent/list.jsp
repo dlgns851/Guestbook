@@ -52,7 +52,7 @@
 <td><%=vo.getNo() %></td>
  <td><%=vo.getName() %></td>
 <td><%=vo.getRegDate() %></td>
-<td><a href="deleteform.jsp">삭제</a></td>
+<td><a href="deleteform.jsp?no2=<%=vo.getNo()%>">삭제</a></td>
 </tr>
 <tr>
 <td><textarea row="4" cols="70"><%=vo.getContent() %> </textarea></td> 

@@ -13,14 +13,19 @@
 
 
 request.setCharacterEncoding("utf-8");
-
+String no2= request.getParameter("no2");
+int no2I=Integer.parseInt(no2);
 String password = request.getParameter("password");
 
 
-
 GuestDao dao = new GuestDao();
-dao.delete(password);
-response.sendRedirect("deleteform.jsp");
+dao.delete2(password,no2I);
+
+
+
+
+
+response.sendRedirect("deleteform.jsp?no2="+no2);
 
 %>
 </body>
